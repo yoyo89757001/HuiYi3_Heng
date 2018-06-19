@@ -128,7 +128,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //	private IjkVideoView ijkVideoView;
 	private MyReceiver myReceiver=null;
 	//private SurfaceView surfaceview;
-	private ScrollView recyclerView;
+	private HorizontalScrollView recyclerView;
 	//private MyAdapter adapter=null;
 	private HorizontalScrollView recyclerView2;
 	//private MyAdapter2 adapter2=null;
@@ -193,45 +193,17 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 		@Override
 		public boolean handleMessage(final Message msg) {
 			switch (msg.what) {
-//				case 111:
-//					//更新地址
-//
-//					break;
-//				case 110:
-//					if (lingdaoList.size() > 1) {
-//
-////						AnimatorSet animatorSet = new AnimatorSet();
-////						animatorSet.playTogether(
-////								ObjectAnimator.ofFloat(adapter2.getViewByPosition(recyclerView2, 1, R.id.ffflll), "scaleY", 1f, 0f),
-////								ObjectAnimator.ofFloat(adapter2.getViewByPosition(recyclerView2, 1, R.id.ffflll), "scaleX", 1f, 0f)
-////								//	ObjectAnimator.ofFloat(helper.itemView,"alpha",0f,1f)
-////						);
-////						animatorSet.setDuration(200);
-////						animatorSet.setInterpolator(new AccelerateInterpolator());
-////						animatorSet.addListener(new AnimatorListenerAdapter() {
-////							@Override
-////							public void onAnimationEnd(Animator animation) {
-////								adapter2.notifyItemRemoved(1);
-////								lingdaoList.remove(1);
-////
-////							}
-////						});
-////						animatorSet.start();
-//
-//					}
-//
-//
-//					break;
+
 				case 999:
 
 					if (yuangongList.size()>0){
 						//adapter.notifyItemRemoved(0);
-						rootLayout.removeViewAt(1);
+						rootLayout.removeViewAt(0);
 						//Log.d(TAG, "dddddd21212121d");
 						yuangongList.remove(0);
 					}
 
-					if (lingdaoList.size()>6){
+					if (lingdaoList.size()>7){
 						rootLayout2.removeViewAt(0);
 						lingdaoList.remove(0);
 					}
@@ -1444,16 +1416,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 
 
-	//	LottieAnimationView vv= (LottieAnimationView) findViewById(R.id.animation_view);
-		// 任何符合颜色过滤界面的类
-	//	final PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.LIGHTEN);
-		// 在整个视图中添加一个颜色过滤器
-		//vv.addColorFilter(colorFilter);
-//		//在特定的图层中添加一个颜色滤镜
-//		vv.addColorFilterToLayer("hello_layer", colorFilter);
-//		// 添加一个彩色过滤器特效“hello_layer”上的内容
-//		vv.addColorFilterToContent("hello_layer", "hello", colorFilter);
-
 		dabg= (ImageView) findViewById(R.id.dabg);
 		wangluo = (LottieAnimationView) findViewById(R.id.wangluo);
 		wangluo.setSpeed(1.8f);
@@ -1507,22 +1469,9 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 		daoSession = MyApplication.getAppContext().getDaoSession().getMoShengRenBeanDao();
 		daoSession.deleteAll();
-		recyclerView = (ScrollView) findViewById(R.id.scrollView);
+		recyclerView = (HorizontalScrollView) findViewById(R.id.scrollView);
 		recyclerView2 = (HorizontalScrollView) findViewById(R.id.recyclerView2);
 
-//		manager = new WrapContentLinearLayoutManager(YiDongNianHuiActivity.this,LinearLayoutManager.VERTICAL,false,this);
-//		recyclerView.setLayoutManager(manager);
-
-//		manager2 = new WrapContentLinearLayoutManager(YiDongNianHuiActivity.this,LinearLayoutManager.HORIZONTAL,false,this);
-//		//recyclerView2.setLayoutManager(new GridLayoutManager(this,2,GridLayoutManager.HORIZONTAL,false));
-//		recyclerView2.setLayoutManager(manager2);
-		//recyclerView.addItemDecoration(new MyDecoration(VlcVideoActivity.this, LinearLayoutManager.VERTICAL,20,R.color.transparent));
-
-//		adapter = new MyAdapter(YiDongNianHuiActivity.this, yuangongList);
-//		recyclerView.setAdapter(adapter);
-
-//		adapter2 = new MyAdapter2(R.layout.tanchuang_item7, lingdaoList);
-//		recyclerView2.setAdapter(adapter2);
 
 
 		mainHandler = new Handler() {
@@ -1541,13 +1490,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 		//Utils.initPermission(YiDongNianHuiActivity.this);
 		initialTts();
 
-//		RelativeLayout.LayoutParams  params= (RelativeLayout.LayoutParams) recyclerView2.getLayoutParams();
-//		params.height=dh/10;
-//		recyclerView2.setLayoutParams(params);
-//		recyclerView2.invalidate();
 
-//		int si=dw/6;
-		//Log.d(TAG, "si:" + si);
 		RelativeLayout.LayoutParams  params2= (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
 		params2.topMargin=dh/13;
 		//params2.height=(dh*7)/10-60;
@@ -1597,14 +1540,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-
-		View view = View.inflate(YiDongNianHuiActivity.this,R.layout.item0,null);
-		ScreenAdapterTools.getInstance().loadView(view);
-		view.setTag("123");
-		rootLayout.addView(view);
-		View view1 =view.findViewWithTag("123");
-		view1.setVisibility(View.INVISIBLE);
-
 
 	}
 
@@ -1670,798 +1605,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 
 
-//	private class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-//
-//		private LayoutInflater layoutInflater;
-//		private Context context;
-//		private List<TanChuangBean> contents;
-//
-//		private MyAdapter(Context c, List<TanChuangBean> strs){
-//			layoutInflater = LayoutInflater.from(c);
-//			context = c;
-//			contents = strs;
-//		}
-//
-//		@Override
-//		public int getItemCount() {
-//
-//			return contents != null ? contents.size() : 0;
-//		}
-//
-//		@Override
-//		public int getItemViewType(int position) {
-//			//Log.d(TAG, contents.get(position).getBumen()+"gggggggggggggggg");
-//			if (mbLeiXingBeanList!=null){
-//				int size=mbLeiXingBeanList.size();
-//				for (int i=0;i<size;i++){
-//					if (contents.get(position).getBumen()!=null && contents.get(position).getBumen().equals(mbLeiXingBeanList.get(i).getSubType())){
-//						//什么身份返回什么类型
-//						Log.d(TAG, "getNum(7):" + getNum(7));
-//						return getNum(7);
-//
-//					}
-//
-//				}
-//			}
-//			return getNum(7);
-//		//	return contents.get(position).getType() == 0 ? ITEM_TYPE.ITEM_TYPE_LEFT.ordinal() : ITEM_TYPE.ITEM_TYPE_RIGHT.ordinal() ;
-//		}
-//
-//		@Override
-//		public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//			Log.d(TAG, "viewType:" + viewType);
-//			RecyclerView.ViewHolder holder=null;
-//			//固定的几种模版
-//			switch (viewType){
-//
-//				case 0:
-//					holder= new ViewHolder0(layoutInflater.inflate(R.layout.item0,parent,false));
-//					break;
-//				case 1:
-//					holder= new ViewHolder1(layoutInflater.inflate(R.layout.item1,parent,false));
-//					break;
-//				case 2:
-//					holder= new ViewHolder2(layoutInflater.inflate(R.layout.item2,parent,false));
-//					break;
-//				case 3:
-//					holder= new ViewHolder3(layoutInflater.inflate(R.layout.item3,parent,false));
-//					break;
-//				case 4:
-//					holder= new ViewHolder4(layoutInflater.inflate(R.layout.item4,parent,false));
-//					break;
-//				case 5:
-//					holder= new ViewHolder5(layoutInflater.inflate(R.layout.item5,parent,false));
-//					break;
-//				case 6:
-//					holder= new ViewHolder6(layoutInflater.inflate(R.layout.item6,parent,false));
-//					break;
-//				case 7:
-//					holder= new ViewHolder7(layoutInflater.inflate(R.layout.item7,parent,false));
-//					break;
-//
-//					default:
-//						holder= new ViewHolder0(layoutInflater.inflate(R.layout.item0,parent,false));
-//
-//			}
-//			return holder;
-//
-//		}
-//
-//		@Override
-//		public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-//
-//			if(holder instanceof ViewHolder0){
-//
-//
-//				((ViewHolder0) holder).name0.setText(contents.get(position).getName());
-//				((ViewHolder0) holder).zhiwei.setText(contents.get(position).getBumen());
-//				int s=mbLeiXingBeanList.size();
-//				for (int i=0;i<s;i++){
-//					if (contents.get(position).getBumen()!=null && mbLeiXingBeanList.get(i).getSubType()!=null && contents.get(position).getBumen().equals(mbLeiXingBeanList.get(i).getSubType())){
-//						//获取本地保存的欢迎语
-//						//设置语音
-//						((ViewHolder0) holder).huanyinyu.setText(contents.get(position).getName());
-//					}
-//				}
-//
-//
-//				Log.d(TAG, "ViewHolder0");
-//
-//			}else if(holder instanceof  ViewHolder1){
-//				Log.d(TAG, "ViewHolder1");
-//
-//				((ViewHolder1) holder).name1.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder2){
-//				Log.d(TAG, "ViewHolder2");
-//
-//				((ViewHolder2) holder).name2.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder3){
-//				Log.d(TAG, "ViewHolder3");
-//				((ViewHolder3) holder).name3.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder4){
-//				Log.d(TAG, "ViewHolder4");
-//				((ViewHolder4) holder).name4.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder5){
-//				Log.d(TAG, "ViewHolder5");
-//				((ViewHolder5) holder).name5.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder6){
-//				Log.d(TAG, "ViewHolder6");
-//				((ViewHolder6) holder).name6.setText(contents.get(position).getName());
-//
-//			}else if (holder instanceof  ViewHolder7){
-//				Log.d(TAG, "ViewHolder7");
-//				((ViewHolder7) holder).name7.setText(contents.get(position).getName());
-//
-//			}
-//
-//		}
-//
-//		private   class ViewHolder0 extends RecyclerView.ViewHolder{
-//
-//			private TextView name0,huanyinyu,zhiwei;
-//			private ViewHolder0(View v){
-//				super(v);
-//				name0 = (TextView)v.findViewById(R.id.name);
-//				huanyinyu = (TextView)v.findViewById(R.id.huanyinyu);
-//				zhiwei = (TextView)v.findViewById(R.id.zhiwei);
-//			}
-//		}
-//
-//		private  class ViewHolder1 extends RecyclerView.ViewHolder{
-//
-//			private TextView name1;
-//			private ViewHolder1(View v){
-//				super(v);
-//				name1 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder2 extends RecyclerView.ViewHolder{
-//
-//			private TextView name2;
-//			private ViewHolder2(View v){
-//				super(v);
-//				name2 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder3 extends RecyclerView.ViewHolder{
-//
-//			private TextView name3;
-//			private ViewHolder3(View v){
-//				super(v);
-//				name3 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder4 extends RecyclerView.ViewHolder{
-//
-//			private TextView name4;
-//			private ViewHolder4(View v){
-//				super(v);
-//				name4 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder5 extends RecyclerView.ViewHolder{
-//
-//			private TextView name5;
-//			private ViewHolder5(View v){
-//				super(v);
-//				name5 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder6 extends RecyclerView.ViewHolder{
-//
-//			private TextView name6;
-//			private ViewHolder6(View v){
-//				super(v);
-//				name6 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//		private  class ViewHolder7 extends RecyclerView.ViewHolder{
-//
-//			private TextView name7;
-//			private ViewHolder7(View v){
-//				super(v);
-//				name7 = (TextView)v.findViewById(R.id.name);
-//			}
-//		}
-//
-//
-//	}
 
-//	//学生跟陌生人
-//	public  class MyAdapter extends BaseQuickAdapter<TanChuangBean,BaseViewHolder> {
-//		//private RequestOptions myOptions = null;
-//		//private RequestOptions myOptions2 = null;
-//
-//		private MyAdapter(int layoutResId, List<TanChuangBean> data) {
-//			super(layoutResId, data);
-////			 myOptions = new RequestOptions()
-////					.circleCrop()
-////					.diskCacheStrategy(DiskCacheStrategy.NONE);
-////			myOptions2 = new RequestOptions()
-////					.circleCrop();
-//		}
-//
-//
-//		@Override
-//		protected void convert(final BaseViewHolder helper, TanChuangBean item) {
-//
-//			try {
-//			ImageView imageView= helper.getView(R.id.touxiang);
-//			TextView name=helper.getView(R.id.name33);
-//			LottieAnimationView lottieAnimationView=helper.getView(R.id.dagou);
-//			TextView zhuangtai=helper.getView(R.id.zhuangtai33);
-//			RelativeLayout toprl=helper.getView(R.id.ffflll);
-////			LinearLayout rl=helper.getView(R.id.zi_ll);
-//			String bumen=item.getBumen();
-//			name.setTypeface(typeFace1);
-//			zhuangtai.setTypeface(typeFace1);
-//			zhuangtai.setTextColor(Color.WHITE);
-//			name.setTextColor(Color.WHITE);
-//
-//
-//			if (helper.getAdapterPosition()==0 ){
-//			// 	rl.setBackgroundColor(Color.parseColor("#00000000"));
-//				toprl.setBackgroundColor(Color.parseColor("#00000000"));
-//				imageView.setBackgroundColor(Color.parseColor("#00000000"));
-//				imageView.setImageBitmap(null);
-//				name.setText("");
-//				zhuangtai.setText("");
-//				lottieAnimationView.setVisibility(View.GONE);
-//				//弹窗的高宽
-//				RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) toprl.getLayoutParams();
-//				lp.width = dw - 20;
-//				lp.leftMargin = 10;
-//				lp.height = ((dh * 7) / 10) / 3;
-//				toprl.setLayoutParams(lp);
-//				toprl.invalidate();
-//			}else {
-//				//Log.d(TAG, "jinlai");
-//				switch (item.getType()) {
-//					case -1:
-//						//陌生人
-//						synthesizer.speak("来宾未登记");
-//						imageView.setBackgroundColor(Color.parseColor("#00000000"));
-//						toprl.setBackgroundResource(R.drawable.msr_bg2);
-//						zhuangtai.setTextColor(Color.RED);
-//						name.setTextColor(Color.RED);
-//
-//						if (huanYinYuBeanDao.load(6L)!=null){
-//							String s=huanYinYuBeanDao.load(6L).getHuanyinci();
-//							if (!s.equals("")){
-//								//String  s1=s.replace("#@",item.getName());
-////								synthesizer.speak(s1);
-//								name.setText(s);
-//								zhuangtai.setText("");
-//
-//							}else{
-////								synthesizer.speak("你身份未登记,请到会议签到处签到");
-//								name.setText("来宾未登记");
-//								zhuangtai.setText("");
-//							}
-//						}else {
-////							synthesizer.speak("你身份未登记,请到会议签到处签到");
-//							name.setText("来宾未登记");
-//							zhuangtai.setText("");
-//						}
-//
-//
-//					//	mSpeechSynthesizer.speak("陌生人进入,请保安尽快到现场或短信保安预警");
-//
-//						break;
-//					case 0:
-//						//员工
-//						//name.setText(item.getName());
-//						switch (bumen){
-//							case "0":
-//								//synthesizer.speak("欢迎光临");
-//								//后台0是代表 当做普通内部员工
-//								//我保存的欢迎语 3 是代表
-//								imageView.setBackgroundColor(Color.parseColor("#00000000"));
-//								toprl.setBackgroundResource(R.drawable.yuangong2);
-//								if (huanYinYuBeanDao.load(1L)!=null){
-//									String s=huanYinYuBeanDao.load(1L).getHuanyinci();
-//									if (!s.equals("")){
-//										String  s1=s.replace("#@",item.getName()).replace("%*",item.getZhiwei());
-//									//	synthesizer.speak(s1);
-//										name.setText(s1);
-//									}else{
-//										name.setText("未设置内部员工欢迎语");
-//									//	synthesizer.speak("欢迎代表莅临指导");
-//									}
-//								}else {
-//									name.setText("未设置内部员工欢迎语");
-//									//synthesizer.speak("欢迎代表莅临指导");
-//								}
-//
-//								break;
-//							case "1":
-//								//嘉宾
-//							//	synthesizer.speak("欢迎光临");
-//								// 2 嘉宾 普通嘉宾
-//								imageView.setBackgroundColor(Color.parseColor("#00000000"));
-//								toprl.setBackgroundResource(R.drawable.jiabing_bg);
-//								if (huanYinYuBeanDao.load(2L)!=null){
-//									String s=huanYinYuBeanDao.load(2L).getHuanyinci();
-//									if (!s.equals("")){
-//										String  s1=s.replace("#@",item.getName()).replace("%*",item.getZhiwei());
-//										//synthesizer.speak(s1);
-//										name.setText(s1);
-//									}else{
-//										name.setText("未设置普通嘉宾欢迎语");
-//										//synthesizer.speak("欢迎嘉宾莅临指导");
-//									}
-//								}else {
-//									name.setText("未设置普通嘉宾欢迎语");
-//									//synthesizer.speak("欢迎嘉宾莅临指导");
-//								}
-//
-//								break;
-//							case "2":
-//								//1内部领导
-//								//我保存的欢迎语1是领导
-//								toprl.setBackgroundResource(R.drawable.liaoning1_03);
-//								imageView.setBackgroundResource(R.drawable.yuanquan);
-//								if (huanYinYuBeanDao.load(3L)!=null){
-//									String s=huanYinYuBeanDao.load(3L).getHuanyinci();
-//									if (!s.equals("")){
-//										String  s1=s.replace("#@",item.getName()).replace("%*",item.getZhiwei());
-//										synthesizer.speak(s1);
-//										name.setText(s1);
-//									}else{
-//										name.setText("未设置内部领导欢迎语");
-//									//	synthesizer.speak("欢迎领导莅临指导");
-//									}
-//								}else {
-//									name.setText("未设置内部领导欢迎语");
-//								//	synthesizer.speak("欢迎领导莅临指导");
-//								}
-//								break;
-//							case "3":
-//								//工作人员
-//								//4工作人员
-////								toprl.setBackgroundResource(R.drawable.lingdao_bg);
-////								imageView.setBackgroundResource(R.drawable.yuanquan);
-////								if (huanYinYuBeanDao.load(4L)!=null){
-////									String s=huanYinYuBeanDao.load(4L).getHuanyinci();
-////									if (!s.equals("")){
-////										String  s1=s.replace("#@",item.getName());
-////										//synthesizer.speak(s1);
-////										zhuangtai.setText(s1);
-////									}else{
-////										zhuangtai.setText("签到成功");
-////										//synthesizer.speak("签到成功");
-////									}
-////								}else {
-////									zhuangtai.setText("签到成功");
-////									//synthesizer.speak("签到成功");
-////								}
-//								break;
-//							case "4":
-//								//合作伙伴
-//								//5外部领导
-//								toprl.setBackgroundResource(R.drawable.liaoning1_03);
-//								imageView.setBackgroundResource(R.drawable.yuanquan);
-//								if (huanYinYuBeanDao.load(4L)!=null){
-//									String s=huanYinYuBeanDao.load(4L).getHuanyinci();
-//									if (!s.equals("")){
-//										String  s1=s.replace("#@",item.getName()).replace("%*",item.getZhiwei());
-//										synthesizer.speak(s1);
-//										name.setText(s1);
-//									}else{
-//										name.setText("未设置外部领导欢迎语");
-//										//synthesizer.speak("签到成功");
-//									}
-//								}else {
-//									name.setText("未设置外部领导欢迎语");
-//									//synthesizer.speak("签到成功");
-//								}
-//								break;
-//							case "5":
-//								//陌生人
-//
-//
-//								break;
-//
-//						}
-//
-//						lottieAnimationView.setSpeed(0.5f);
-//						lottieAnimationView.playAnimation();
-//						lottieAnimationView.setVisibility(View.VISIBLE);
-//
-//						break;
-//					case 1:
-//						//访客
-//						//toprl.setBackgroundResource(R.drawable.zidonghuoqu15);
-////						name.setTypeface(typeFace1);
-////						zhuangtai.setTypeface(typeFace1);
-////						name.setText(item.getName());
-////						zhuangtai.setText("返校报道成功");
-//
-//						//richeng.setText("");
-//						//name.setText(item.getName());
-//						//autoScrollTextView.setText("欢迎你来本公司参观指导。");
-//						break;
-//					case 2:
-////						name.setTypeface(typeFace1);
-////						zhuangtai.setTypeface(typeFace1);
-////						name.setText(item.getName());
-//					//	zhuangtai.setText("返校报道成功");
-//
-//						//VIP访客
-//						//	toprl.setBackgroundResource(R.drawable.ms_bg);
-//						//	richeng.setText("");
-//						//	name.setText(item.getName());
-//						//autoScrollTextView.setText("欢迎VIP访客 "+item.getName()+" 来本公司指导工作。");
-//						break;
-//				}
-//				if (item.getTouxiang()!=null){
-//
-//					Glide.with(MyApplication.getAppContext())
-//							//.load(zhuji+item.getTouxiang())
-//								.load(item.getTouxiang())
-//							//.apply(myOptions2)
-//							.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//						//	.transform(new GlideRoundTransform(MyApplication.getAppContext(), 6))
-//							.into((ImageView) helper.getView(R.id.touxiang));
-//				}else {
-//					Glide.with(MyApplication.getAppContext())
-//							.load(item.getBytes())
-//							//.apply(myOptions)
-//							.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//							//	.transform(new GlideRoundTransform(MyApplication.getAppContext(), 6))
-//							.into((ImageView) helper.getView(R.id.touxiang));
-//				}
-//
-//			}
-//
-//			RelativeLayout.LayoutParams lp2 = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
-//			if (item.getType()==-1){
-//				zhuangtai.setVisibility(View.GONE);
-//				name.setTextSize(54);
-//				//头像的高宽
-//				lp2.topMargin=-10;
-//				lp2.width=dw/3-130;
-//				lp2.height=dw/3-130;
-//				imageView.setLayoutParams(lp2);
-//				imageView.invalidate();
-//				//弹窗的高宽
-//				RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) toprl.getLayoutParams();
-//				lp.width=dw-20;
-//				lp.leftMargin=10;
-//				lp.height=((dh*7)/10)/3-40;
-//				toprl.setLayoutParams(lp);
-//				toprl.invalidate();
-//			}else {
-//				zhuangtai.setVisibility(View.VISIBLE);
-//				name.setTextSize(80);
-//
-//				if (bumen.equals("0") || bumen.equals("1")){
-//					//工作人员，合作伙伴
-//					// 头像的高宽
-//					imageView.setPadding(60,60,60,60);
-//					lp2.topMargin=0;
-//					lp2.leftMargin=-2;
-//					lp2.width = ((dh*7)/10)/3-60;
-//					lp2.height = ((dh*7)/10)/3-60;
-//					imageView.setLayoutParams(lp2);
-//					imageView.invalidate();
-//					//弹窗的高宽
-//					RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) toprl.getLayoutParams();
-//					lp.width=dw-20;
-//					lp.leftMargin=10;
-//					lp.height=((dh*7)/10)/3-60;
-//					toprl.setLayoutParams(lp);
-//					toprl.invalidate();
-//
-//				}else {
-//					// 头像的高宽
-//					imageView.setPadding(30,30,30,30);
-//					lp2.topMargin = ((((dh * 7) / 10) / 3 ) - (dw / 3 + 20)) / 2;
-//					lp2.width = dw / 3 + 20;
-//					lp2.leftMargin=2;
-//					lp2.height = dw / 3 + 20;
-//					imageView.setLayoutParams(lp2);
-//					imageView.invalidate();
-//					//弹窗的高宽
-//					RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) toprl.getLayoutParams();
-//					lp.width = dw - 20;
-//					lp.leftMargin = 10;
-//					lp.height = ((dh * 7) / 10) / 3;
-//					toprl.setLayoutParams(lp);
-//					toprl.invalidate();
-//				}
-//			}
-////				//字
-////			RelativeLayout.LayoutParams zi = (RelativeLayout.LayoutParams) rl.getLayoutParams();
-////				if (item.getType()==-1){
-////					zi.leftMargin=dw/3-160;
-////
-////				}else {
-////					zi.leftMargin=dw/3-80;
-////				}
-////				rl.setLayoutParams(zi);
-////				rl.invalidate();
-//
-//			//弹窗的高宽
-//
-//
-//			SpringSystem springSystem = SpringSystem.create();
-//			final Spring spring = springSystem.createSpring();
-//			//两个参数分别是弹力系数和阻力系数
-//			spring.setSpringConfig(SpringConfig.fromOrigamiTensionAndFriction(80, 6));
-//			// 添加弹簧监听器
-//			spring.addListener(new SimpleSpringListener() {
-//
-//				@Override
-//				public void onSpringUpdate(Spring spring) {
-//					// value是一个符合弹力变化的一个数，我们根据value可以做出弹簧动画
-//					float value = (float) spring.getCurrentValue();
-//					//Log.d(TAG, "value:" + value);
-//					//基于Y轴的弹簧阻尼动画
-//					//	helper.itemView.setTranslationY(value);
-//
-//					// 对图片的伸缩动画
-//					//float scale = 1f - (value * 0.5f);
-//					helper.itemView.setScaleX(value);
-//					helper.itemView.setScaleY(value);
-//				}
-//			});
-//
-//				// 设置动画结束值
-//				spring.setEndValue(1f);
-//			}catch (Exception e){
-//				Log.d(TAG, e.getMessage()+"");
-//			}
-//		}
-//
-//	}
-
-
-//	//领导
-//	private  class MyAdapter2 extends BaseQuickAdapter<TanChuangBean,BaseViewHolder> {
-//		//private RequestOptions myOptions = null;
-//
-//		private MyAdapter2(int layoutResId, List<TanChuangBean> data) {
-//			super(layoutResId, data);
-//			//myOptions = new RequestOptions();
-//			//myOptions.transform(new GrayscaleTransformation(this));
-//		}
-//
-//
-//		@Override
-//		protected void convert(final BaseViewHolder helper, TanChuangBean item) {
-//
-//
-//			RelativeLayout toprl= helper.getView(R.id.ffflll);
-//			TextView t1=helper.getView(R.id.test);
-//			TextView t2=helper.getView(R.id.test2);
-//			TextView t3=helper.getView(R.id.test3);
-//			t1.setTypeface(typeFace1);
-//			t1.setText("学号");
-//			t2.setTypeface(typeFace1);
-//			t2.setText(item.getName());
-//			t3.setTypeface(typeFace1);
-//			t3.setText(DateUtils.time(System.currentTimeMillis()+""));
-//
-//			ImageView imageView=helper.getView(R.id.touxiang);
-//
-//			//tt.setText(item.getName());
-////
-////				switch (item.getType()){
-////					case -1:
-////						//陌生人
-////						//	toprl.setBackgroundResource(R.drawable.tanchuang);
-////
-////
-////						break;
-////					case 0:
-////						//员工
-////						toprl.setBackgroundResource(R.color.tabtextcolo);
-////						String sa1="热烈欢迎"+item.getName()+"莅临参观指导";
-////						StringBuilder sb1=new StringBuilder();
-////						for(int i=0;i<sa1.length();i++){
-////							sb1.append((sa1.charAt(i)));//依次加入sb中
-////							if((i+1)%(8)==0 &&((i+1)!=sa1.length())){
-////								sb1.append("\n");
-////							}
-////						}
-////
-////						break;
-////
-////					case 1:
-////						//访客
-////
-////						toprl.setBackgroundResource(R.color.tabtextcolo);
-////						String sa="热烈欢迎"+item.getName()+"莅临参观指导";
-////						StringBuilder sb=new StringBuilder();
-////						for(int i=0;i<sa.length();i++){
-////							sb.append((sa.charAt(i)));//依次加入sb中
-////							if((i+1)%(8)==0 &&((i+1)!=sa.length())){
-////								sb.append("\n");
-////							}
-////						}
-////
-////
-////						break;
-////					case 2:
-////						//VIP访客
-////						toprl.setBackgroundResource(R.color.tabtextcolo);
-////						String sa2="热烈欢迎"+item.getName()+"莅临参观指导";
-////						StringBuilder sb2=new StringBuilder();
-////						for(int i=0;i<sa2.length();i++){
-////							sb2.append((sa2.charAt(i)));//依次加入sb中
-////							if((i+1)%(8)==0 &&((i+1)!=sa2.length())){
-////								sb2.append("\n");
-////							}
-////						}
-////
-////
-////						break;
-////
-////				}
-////					case 18:
-////						GPUImage	gpuImage18 = new GPUImage(VlcVideoActivity.this);
-////						gpuImage18.setImage(BitmapFactory.decodeResource(getResources(),R.drawable.a18));
-////						gpuImage18.setFilter(new GPUImageBrightnessFilter(-0.6f));
-////						Bitmap bitmap18 = gpuImage18.getBitmapWithFilterApplied();
-////						imageView.setImageBitmap(bitmap18);
-////					//	imageView.setImageResource(R.drawable.a18);
-//////						Glide.with(MyApplication.getAppContext())
-//////								.load(R.drawable.a18)
-//////								//.load("http://121.46.3.20"+item.getTouxiang())
-//////								//.apply(myOptions)
-//////								//.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//////								//	.bitmapTransform(new GrayscaleTransformation(VlcVideoActivity.this))
-//////								.into(imageView);
-////						break;
-////					case 19:
-////						imageView.setImageResource(R.drawable.a19);
-//////						Glide.with(MyApplication.getAppContext())
-//////								.load(R.drawable.a19)
-//////								//.load("http://121.46.3.20"+item.getTouxiang())
-//////								//.apply(myOptions)
-//////								//.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//////								//	.bitmapTransform(new GrayscaleTransformation(VlcVideoActivity.this))
-//////								.into(imageView);
-////						break;
-////
-////
-////				}
-////
-//				if (item.getTouxiang()!=null ){
-//					if (item.getTouxiang()!=null){
-//					//	Log.d(TAG, baoCunBean.getTouxiangzhuji() + item.getTouxiang());
-//						Glide.with(MyApplication.getAppContext())
-//								//	.load(R.drawable.vvv)
-//								.load(item.getTouxiang())
-//							//	.load(zhuji+item.getTouxiang())
-//								//.apply(myOptions)
-//								.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//							//	.bitmapTransform(new BrightnessFilterTransformation(YiZhongYanShiActivity.this,-0.7f))
-//								//.bitmapTransform(new GrayscaleTransformation(VlcVideoActivity.this))
-//								.into(imageView);
-//					}else {
-//						Glide.with(MyApplication.getAppContext())
-//								.load(R.drawable.zidonghuoqu1)
-//								//.load("http://121.46.3.20"+item.getTouxiang())
-//								//.apply(myOptions)
-//								.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
-//								//	.bitmapTransform(new GrayscaleTransformation(VlcVideoActivity.this))
-//								.into(imageView);
-//					}
-//				}
-//
-//			RelativeLayout.LayoutParams  ll= (RelativeLayout.LayoutParams) imageView.getLayoutParams();
-//			ll.width=(dw/12);
-//			ll.height=(dw/12);
-//			imageView.setLayoutParams(ll);
-//			imageView.invalidate();
-//
-////			RecyclerView.LayoutParams  ll2= (RecyclerView.LayoutParams) toprl.getLayoutParams();
-////			ll2.height=(dw/13)+10;
-////			toprl.setLayoutParams(ll2);
-////			toprl.invalidate();
-//
-//			}
-//	}
-
-//	/**
-//	 * 生成二维码
-//	 * @param string 二维码中包含的文本信息
-//	 * @param mBitmap logo图片
-//	 * @param format  编码格式
-//	 * [url=home.php?mod=space&uid=309376]@return[/url] Bitmap 位图
-//	 * @throws WriterException
-//	 */
-//	private static final int IMAGE_HALFWIDTH = 1;//宽度值，影响中间图片大小
-//	public Bitmap createCode(String string,Bitmap mBitmap, BarcodeFormat format)
-//			throws WriterException {
-//		Matrix m = new Matrix();
-//		float sx = (float) 2 * IMAGE_HALFWIDTH / mBitmap.getWidth();
-//		float sy = (float) 2 * IMAGE_HALFWIDTH / mBitmap.getHeight();
-//		m.setScale(sx, sy);//设置缩放信息
-//		//将logo图片按martix设置的信息缩放
-//		mBitmap = Bitmap.createBitmap(mBitmap, 0, 0,
-//				mBitmap.getWidth(), mBitmap.getHeight(), m, false);
-//		MultiFormatWriter writer = new MultiFormatWriter();
-//		Hashtable<EncodeHintType, String> hst = new Hashtable<EncodeHintType, String>();
-//		hst.put(EncodeHintType.CHARACTER_SET, "UTF-8");//设置字符编码
-//		BitMatrix matrix = writer.encode(string, format, 600, 600, hst);//生成二维码矩阵信息
-//		int width = matrix.getWidth();//矩阵高度
-//		int height = matrix.getHeight();//矩阵宽度
-//		int halfW = width/2;
-//		int halfH = height/2;
-//		int[] pixels = new int[width * height];//定义数组长度为矩阵高度*矩阵宽度，用于记录矩阵中像素信息
-//		for (int y = 0; y < height; y++) {//从行开始迭代矩阵
-//			for (int x = 0; x < width; x++) {//迭代列
-//				if (x > halfW - IMAGE_HALFWIDTH && x < halfW + IMAGE_HALFWIDTH
-//						&& y > halfH - IMAGE_HALFWIDTH
-//						&& y < halfH + IMAGE_HALFWIDTH) {//该位置用于存放图片信息
-//			//记录图片每个像素信息
-//					pixels[y * width + x] = mBitmap.getPixel(x - halfW
-//							+ IMAGE_HALFWIDTH, y - halfH + IMAGE_HALFWIDTH);              } else {
-//					if (matrix.get(x, y)) {//如果有黑块点，记录信息
-//						pixels[y * width + x] = 0xff000000;//记录黑块信息
-//					}
-//				}
-//			}
-//		}
-//		Bitmap bitmap = Bitmap.createBitmap(width, height,
-//				Bitmap.Config.ARGB_8888);
-//		// 通过像素数组生成bitmap
-//		bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-//		return bitmap;
-//	}
-//	private class MyReceiverFile  extends BroadcastReceiver {
-//
-//		@Override
-//		public void onReceive(Context context, final Intent intent) {
-//			String action = intent.getAction();
-//			if (action.equals(Intent.ACTION_MEDIA_EJECT)) {
-//				//USB设备移除，更新UI
-//				Log.d(TAG, "设备被移出");
-////				if (rollPagerView!=null){
-////					if (rollPagerView.isPlaying()){
-////						rollPagerView.pause();
-////					}
-////
-////
-////				}
-//				if (ijkMediaPlayer!=null){
-//					Log.d(TAG, "播放暂停");
-//					ijkVideoView.pause();
-//					ijkVideoView.canPause();
-//
-//					//ijkVideoView.stopPlayback();
-//					//ijkMediaPlayer.stop();
-//				}
-//			} else if (action.equals(Intent.ACTION_MEDIA_MOUNTED)) {
-//				//USB设备挂载，更新UI
-//				Log.d(TAG, "设备插入");
-//				new Thread(new Runnable() {
-//					@Override
-//					public void run() {
-//						String usbPath = intent.getDataString();//（usb在手机上的路径）
-//
-//						getAllFiles(new File(usbPath.split("file:///")[1]+File.separator+"file"));
-//						Log.d(TAG, usbPath);
-//					}
-//				}).start();
-//			}
-//
-//		}
-//	}
 
 	/**
 	 * 生成一个0 到 count 之间的随机数
@@ -2695,36 +1839,36 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 	@Override
 	protected void onResume() {
 
-//		new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-//				try {
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//
-//				for ( int i=0;i<2;i++){
-//					try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					ShiBieBean.PersonBeanSB sb=new ShiBieBean.PersonBeanSB();
-//					sb.setId(1234567L);
-//					sb.setDepartment("观众");
-//					sb.setName("测试");
-//
-//					Message message3 = Message.obtain();
-//					message3.arg1 = 1;
-//					message3.obj = sb;
-//					handler.sendMessage(message3);
-//
-//				}
-//
-//
-//			}
-//		}).start();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				for ( int i=0;i<2;i++){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					ShiBieBean.PersonBeanSB sb=new ShiBieBean.PersonBeanSB();
+					sb.setId(1234567L);
+					sb.setDepartment("观众");
+					sb.setName("测试");
+
+					Message message3 = Message.obtain();
+					message3.arg1 = 1;
+					message3.obj = sb;
+					handler.sendMessage(message3);
+
+				}
+
+
+			}
+		}).start();
 
 		if (netWorkStateReceiver == null) {
 			netWorkStateReceiver = new NetWorkStateReceiver();
@@ -2825,89 +1969,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 	}
 
 
-//	private void changeSurfaceSize() {
-//		// get screen size
-//		int dw = Utils.getDisplaySize(getApplicationContext()).x;
-//		int dh = Utils.getDisplaySize(getApplicationContext()).y;
-//
-////		RelativeLayout.LayoutParams re1 = (RelativeLayout.LayoutParams)surfaceview.getLayoutParams();
-////
-////		  re1.width=dw/3;
-////		  re1.height = dh/5;
-////
-////		surfaceview.setLayoutParams(re1);
-////		surfaceview.invalidate();
-//		Log.d(TAG, baoCunBean.getShipingIP()+"hhhhh");
-//		if (mediaPlayer != null) {
-//			Log.d(TAG, baoCunBean.getShipingIP()+"gggg");
-//
-//			media = new Media(libvlc, Uri.parse("rtsp://"+baoCunBean.getShipingIP()+"/user=admin&password=&channel=1&stream=0.sdp"));
-//			mediaPlayer.setMedia(media);
-//			mediaPlayer.play();
-//
-//		}
-//
-//	}
-//	/**
-//	 * websocket接口返回face.image
-//	 * image为base64编码的字符串
-//	 * 将字符串转为可以识别的图片
-//	 * @param imgStr
-//	 * @return
-//	 */
-//	public Bitmap generateImage(String imgStr, int cont, WBWeiShiBieDATABean dataBean, Context context) throws Exception {
-//		// 对字节数组字符串进行Base64解码并生成图片
-//		if (imgStr == null) // 图像数据为空
-//			return null;
-//		BASE64Decoder decoder = new BASE64Decoder();
-//		try {
-//			// Base64解码
-//			final byte[][] b = {decoder.decodeBuffer(imgStr)};
-//			for (int i = 0; i < b[0].length; ++i) {
-//				if (b[0][i] < 0) {// 调整异常数据
-//					b[0][i] += 256;
-//				}
-//			}
-//			MoShengRenBean2 moShengRenBean2=new MoShengRenBean2();
-//			moShengRenBean2.setId(dataBean.getTrack());
-//			moShengRenBean2.setBytes(b[0]);
-//			moShengRenBean2.setUrl("dd");
-//
-//			moShengRenBean2List.add(moShengRenBean2);
-//
-//				adapter.notifyDataSetChanged();
-//
-//
-//
-//
-//
-//			//   Bitmap bitmap= BitmapFactory.decodeByteArray(b[0],0, b[0].length);
-//
-//			//  Log.d("WebsocketPushMsg", "bitmap.getHeight():" + bitmap.getHeight());
-//
-//			// 生成jpeg图片
-//			//  OutputStream out = new FileOutputStream(imgFilePath);
-//			//   out.write(b);
-//			//  out.flush();
-//			//  out.close();
-//
-//
-////			dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-////				@Override
-////				public void onDismiss(DialogInterface dialog) {
-////					Log.d("VlcVideoActivity", "Dialog销毁2");
-////					b[0] =null;
-////				}
-////			});
-//			//dialog.show();
-//
-//
-//			return null;
-//		} catch (Exception e) {
-//			throw e;
-//
-//		}
-//	}
+
 
 	public  int dip2px(Context context, float dipValue){
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -3039,42 +2101,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 												});
 											}
 
-											//link_getAll_User(dataBean.getPerson().getJob_number());
 
-//										switch (dataBean.getPerson().getDepartment()) {
-//											case "省公司领导":
-//												benDiRenShuBean.setNShen((benDiRenShuBean.getNShen() - 1) < 0 ? 0 : (benDiRenShuBean.getNShen() - 1));
-//												benDiRenShuBean.setN1((benDiRenShuBean.getN1() - 1) < 0 ? 0 : (benDiRenShuBean.getN1() - 1));
-//												benDiRenShuBean.setYShen(benDiRenShuBean.getYShen() + 1);
-//												benDiRenShuBean.setY1(benDiRenShuBean.getY1() + 1);
-//												benDiRenShuBeanDao.update(benDiRenShuBean);
-//
-//												break;
-//											case "市公司领导":
-//												benDiRenShuBean.setNShi((benDiRenShuBean.getNShi() - 1) < 0 ? 0 : (benDiRenShuBean.getNShi() - 1));
-//												benDiRenShuBean.setN1((benDiRenShuBean.getN1() - 1) < 0 ? 0 : (benDiRenShuBean.getN1() - 1));
-//												benDiRenShuBean.setYShi(benDiRenShuBean.getYShi() + 1);
-//												benDiRenShuBean.setY1(benDiRenShuBean.getY1() + 1);
-//												benDiRenShuBeanDao.update(benDiRenShuBean);
-//
-//												break;
-//											case "特邀嘉宾":
-//												benDiRenShuBean.setNTeyao((benDiRenShuBean.getNTeyao() - 1) < 0 ? 0 : (benDiRenShuBean.getNTeyao() - 1));
-//												benDiRenShuBean.setN1((benDiRenShuBean.getN1() - 1) < 0 ? 0 : (benDiRenShuBean.getN1() - 1));
-//												benDiRenShuBean.setYTeyao(benDiRenShuBean.getYTeyao() + 1);
-//												benDiRenShuBean.setY1(benDiRenShuBean.getY1() + 1);
-//												benDiRenShuBeanDao.update(benDiRenShuBean);
-//
-//												break;
-//											default:
-//												benDiRenShuBean.setN1((benDiRenShuBean.getN1() - 1) < 0 ? 0 : (benDiRenShuBean.getN1() - 1));
-//												benDiRenShuBean.setY1(benDiRenShuBean.getY1() + 1);
-//												benDiRenShuBeanDao.update(benDiRenShuBean);
-//
-//												break;
-//										}
-//										qianDaoId.setIsQd(true);
-//										qianDaoIdDao.update(qianDaoId)
 									}else {
 											runOnUiThread(new Runnable() {
 												@Override
@@ -3091,15 +2118,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 								Log.d("WebsocketPushMsg", e.getMessage()+"aaajjjj");
 							}
 
-//						BenDiQianDao qianDao=new BenDiQianDao();
-//						qianDao.setId(Long.parseLong(dataBean.getPerson().getJob_number()));
-//						qianDao.setName(dataBean.getPerson().getName());
-//						qianDao.setPhone(DateUtils.time(System.currentTimeMillis()+""));
-//						try {
-//							benDiQianDaoDao.insert(qianDao);
-//						}catch (Exception e){
-//							e.printStackTrace();
-//						}
 
 					}
              else if (wbBean.getType().equals("unrecognized")) {
@@ -3205,8 +2223,8 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //				conntionHandler.removeCallbacks(runnable);
 //				conntionHandler=null;
 //				runnable=null;
-//
 //			}
+
 			if (webSocketClient!=null){
 				webSocketClient.close();
 				webSocketClient=null;
@@ -3302,61 +2320,6 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 
 
-//
-//	private void link_houtai(User zhaoPianBean) {
-//		//final MediaType JSON=MediaType.parse("application/json; charset=utf-8");
-//		//http://192.168.2.4:8080/sign?cmd=getUnSignList&subjectId=jfgsdf
-//		OkHttpClient okHttpClient= new OkHttpClient();
-//
-//		RequestBody body = new FormBody.Builder()
-//				.add("cmd","addSign")
-//				.add("subjectId",zhaoPianBean.getId()+"")
-//				.add("subjectPhoto",zhaoPianBean.getPhotos().get(0).getUrl())
-//				.build();
-//		Request.Builder requestBuilder = new Request.Builder()
-//				.header("Content-Type", "application/json")
-//				.post(body)
-//				.url("http://192.168.2.17:8080/sign");
-//
-//		// step 3：创建 Call 对象
-//		Call call = okHttpClient.newCall(requestBuilder.build());
-//
-//		//step 4: 开始异步请求
-//		call.enqueue(new Callback() {
-//			@Override
-//			public void onFailure(Call call, IOException e) {
-//				Log.d("AllConnects", "请求添加陌生人失败"+e.getMessage());
-//			}
-//
-//			@Override
-//			public void onResponse(Call call, Response response) throws IOException {
-//				Log.d("AllConnects", "请求添加陌生人成功"+call.request().toString());
-//				//获得返回体
-//				try {
-//
-//				ResponseBody body = response.body();
-//			//	Log.d("AllConnects", "aa   "+response.body().string());
-//
-//				JsonObject jsonObject= GsonUtil.parse(body.string()).getAsJsonObject();
-//				Gson gson=new Gson();
-//				int code=jsonObject.get("resultCode").getAsInt();
-//				if (code==0){
-//
-////					JsonObject array=jsonObject.get("data").getAsJsonObject();
-////					User zhaoPianBean=gson.fromJson(array,User.class);
-////					link_houtai(zhaoPianBean);
-//					//link_gengxing_erweima();
-//				}
-//
-//				}catch (Exception e){
-//					Log.d("WebsocketPushMsg", e.getMessage());
-//				}
-//			}
-//		});
-//
-//
-//		}
-
 	public class NetWorkStateReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -3394,6 +2357,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //					Toast.makeText(context, "WIFI已断开,移动数据已断开", Toast.LENGTH_SHORT).show();
 //				}
 //API大于23时使用下面的方式进行网络监听
+
 			}else {
 
 				Log.d(TAG, "API23");

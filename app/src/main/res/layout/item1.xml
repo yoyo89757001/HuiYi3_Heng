@@ -7,7 +7,7 @@
     <RelativeLayout
         android:background="@drawable/m1_1"
         android:id="@+id/root_rl"
-        android:layout_width="wrap_content"
+        android:layout_width="1047px"
         android:layout_height="400px">
 
 

@@ -57,25 +57,25 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
         android:visibility="visible"
         android:scrollbars="none"
         android:layout_above="@+id/recyclerView2"
         android:id="@+id/scrollView"
         android:layout_height="match_parent">
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:id="@+id/root_layout"
             android:gravity="center"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
 
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
 
     <!--&lt;!&ndash;弹窗&ndash;&gt;-->
     <!--<android.support.v7.widget.RecyclerView-->
