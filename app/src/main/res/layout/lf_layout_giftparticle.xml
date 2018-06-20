@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-	<com.ruitong.huiyi3_heng.view.InterceptableViewGroup
+	<com.ruitong.huiyi3.view.InterceptableViewGroup
 		android:id="@+id/container"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"

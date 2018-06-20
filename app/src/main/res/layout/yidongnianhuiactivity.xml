@@ -11,7 +11,7 @@
         android:scaleType="fitXY"
         android:layout_height="match_parent" />
 
-    <com.ruitong.huiyi3_heng.view.CustomVideoView
+    <com.ruitong.huiyi3.view.CustomVideoView
         android:id="@+id/valuess"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

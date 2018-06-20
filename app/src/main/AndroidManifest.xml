@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ruitong.huiyi3_heng">
+    package="com.ruitong.huiyi3">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Required  一些系统要求的权限，如访问网络等 -->
-    <uses-permission android:name="com.ruitong.huiyi3_heng.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.ruitong.huiyi3.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -34,7 +34,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <permission
-        android:name="com.ruitong.huiyi3_heng.permission.JPUSH_MESSAGE"
+        android:name="com.ruitong.huiyi3.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <application
@@ -83,7 +83,7 @@
                 <action android:name="cn.jpush.android.ui.PushActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.ruitong.huiyi3_heng" />
+                <category android:name="com.ruitong.huiyi3" />
             </intent-filter>
         </activity>
 
@@ -103,7 +103,7 @@
         <!-- since 3.0.9 Required SDK 核心功能 -->
         <provider
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="com.ruitong.huiyi3_heng.DataProvider"
+            android:authorities="com.ruitong.huiyi3.DataProvider"
             android:exported="false" />
         <!-- Required SDK核心功能 -->
         <receiver
@@ -112,7 +112,7 @@
             android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!-- Required  显示通知栏 -->
-                <category android:name="com.ruitong.huiyi3_heng" />
+                <category android:name="com.ruitong.huiyi3" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -143,7 +143,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" /> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="com.ruitong.huiyi3_heng" />
+                <category android:name="com.ruitong.huiyi3" />
             </intent-filter>
         </receiver>
 
@@ -152,7 +152,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
 
-                <category android:name="com.ruitong.huiyi3_heng" />
+                <category android:name="com.ruitong.huiyi3" />
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->
