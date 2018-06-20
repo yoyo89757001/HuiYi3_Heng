@@ -8,12 +8,14 @@
 <RelativeLayout
     android:background="@drawable/bg13"
     android:id="@+id/root_rl"
-    android:layout_width="430px"
+    android:layout_width="470px"
+    android:layout_marginLeft="5px"
+    android:layout_marginRight="5px"
     android:layout_height="600px">
 
 
     <ImageView
-        android:layout_width="140px"
+        android:layout_width="148px"
         android:id="@+id/touxiang"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170px"
@@ -53,7 +55,7 @@
 
         <TextView
             android:id="@+id/zhiwei"
-            android:textSize="20sp"
+            android:textSize="20px"
             android:visibility="gone"
             android:layout_marginTop="50px"
             android:layout_marginBottom="20px"

@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
@@ -32,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.baidu.tts.client.SpeechSynthesizer;
@@ -81,6 +83,7 @@ import com.ruitong.huiyi3_heng.tts.util.OfflineResource;
 import com.ruitong.huiyi3_heng.utils.DateUtils;
 import com.ruitong.huiyi3_heng.utils.GsonUtil;
 import com.ruitong.huiyi3_heng.utils.Utils;
+import com.ruitong.huiyi3_heng.view.CustomVideoView;
 import com.ruitong.huiyi3_heng.view.GlideCircleTransform;
 import com.ruitong.huiyi3_heng.view.GlideRoundTransform;
 
@@ -186,6 +189,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 	private String touxiangPath=null;
 	private ZhuJiBeanHDao zhuJiBeanHDao=null;
 	private HuiYiIDDao huiYiIDDao=null;
+	private CustomVideoView videoView;
 
 
 	public  Handler handler=new Handler(new Handler.Callback() {
@@ -198,7 +202,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 					if (yuangongList.size()>0){
 						//adapter.notifyItemRemoved(0);
-						rootLayout.removeViewAt(0);
+						rootLayout.removeViewAt(1);
 						//Log.d(TAG, "dddddd21212121d");
 						yuangongList.remove(0);
 					}
@@ -213,6 +217,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 			}
 
 			if (msg.arg1==1){
+
 
 				//view1.setVisibility(View.GONE);
 
@@ -229,8 +234,8 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 					bean.setZhiwei(dataBean.getTitle()==null ? "":dataBean.getTitle());
 					bean.setGonghao(dataBean.getJob_number()==null ? "":dataBean.getJob_number());
 					bean.setTouxiang(dataBean.getAvatar());
-
 					switch (dataBean.getSubject_type()) {
+
 						case 0: //员工
 							//Log.d(TAG, "员工k");
 
@@ -263,6 +268,11 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 										}
 									}
 
+//									int min=1;
+//									int max=15;
+//									Random random = new Random();
+//									int num = random.nextInt(max)%(max-min+1) + min;
+
 									switch (mbtype){
 										case 1: {
 
@@ -276,6 +286,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view1.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -297,7 +308,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -337,6 +348,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view2.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -355,7 +367,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -394,6 +406,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -411,7 +424,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -450,6 +463,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -468,7 +482,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -507,6 +521,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -523,7 +538,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -562,6 +577,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -583,7 +599,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -622,6 +638,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											name3.setText(bean.getName());
 											TextView zhiwei = (TextView) view3.findViewById(R.id.zhiwei);
 											zhiwei.setText(bean.getBumen());
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 //
 											Glide.with(YiDongNianHuiActivity.this)
@@ -639,7 +656,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -678,6 +695,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -696,7 +714,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -735,6 +753,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -752,7 +771,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -791,6 +810,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -808,7 +828,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -847,6 +867,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -863,7 +884,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -902,6 +923,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -920,7 +942,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -959,6 +981,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -975,7 +998,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -1014,6 +1037,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -1030,7 +1054,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -1069,6 +1093,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											zhiwei.setText(bean.getBumen());
 											TextView huanyinyu = (TextView) view3.findViewById(R.id.huanyinyu);
 											huanyinyu.setText(hyy);
+											if (baoCunBean.getIsBoYuYing())
 											synthesizer.speak(hyy==null?"":hyy);
 
 											Glide.with(YiDongNianHuiActivity.this)
@@ -1085,7 +1110,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 											new Handler().post(new Runnable() {
 												@Override
 												public void run() {
-													recyclerView.fullScroll(ScrollView.FOCUS_DOWN);
+													recyclerView.fullScroll(ScrollView.FOCUS_RIGHT);
 												}
 											});
 
@@ -1180,7 +1205,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 											try {
 
-												SystemClock.sleep(18000);
+												SystemClock.sleep(108000);
 												Message message = Message.obtain();
 												message.what = 999;
 												handler.sendMessage(message);
@@ -1413,6 +1438,7 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 
 		rootLayout= (LinearLayout) findViewById(R.id.root_layout);
 		rootLayout2= (LinearLayout) findViewById(R.id.root_layout2);
+		videoView=(CustomVideoView)findViewById(R.id.valuess);
 
 
 
@@ -1491,11 +1517,11 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 		initialTts();
 
 
-		RelativeLayout.LayoutParams  params2= (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-		params2.topMargin=dh/13;
-		//params2.height=(dh*7)/10-60;
-		recyclerView.setLayoutParams(params2);
-		recyclerView.invalidate();
+//		RelativeLayout.LayoutParams  params2= (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+//		params2.topMargin=dh/13;
+//		//params2.height=(dh*7)/10-60;
+//		recyclerView.setLayoutParams(params2);
+//		recyclerView.invalidate();
 
 	//	link_login();
 
@@ -1540,6 +1566,23 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
+
+		View view = View.inflate(YiDongNianHuiActivity.this,R.layout.item0,null);
+		ScreenAdapterTools.getInstance().loadView(view);
+		view.setTag("123");
+		rootLayout.addView(view);
+		View view1 =view.findViewWithTag("123");
+		view1.setVisibility(View.INVISIBLE);
+		String uri = "android.resource://" + getPackageName() + "/" + R.raw.mm22;
+
+		videoView.setVideoPath(uri);
+		videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				mp.setLooping(true);//设置循环播放
+			}
+		});
+		videoView.start();//开始播放
 
 	}
 
@@ -1836,39 +1879,47 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 		return super.onKeyDown(keyCode, event);
 	}
 
+
+
 	@Override
 	protected void onResume() {
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				for ( int i=0;i<2;i++){
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					ShiBieBean.PersonBeanSB sb=new ShiBieBean.PersonBeanSB();
-					sb.setId(1234567L);
-					sb.setDepartment("观众");
-					sb.setName("测试");
-
-					Message message3 = Message.obtain();
-					message3.arg1 = 1;
-					message3.obj = sb;
-					handler.sendMessage(message3);
-
-				}
-
-
-			}
-		}).start();
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//
+//				for ( int i=0;i<50;i++){
+//					try {
+//						Thread.sleep(2000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//
+//					int min=1;
+//					int max=999999999;
+//					Random random = new Random();
+//					int num = random.nextInt(max)%(max-min+1) + min;
+//
+//					ShiBieBean.PersonBeanSB sb=new ShiBieBean.PersonBeanSB();
+//					sb.setId((long) num);
+//					sb.setDepartment("观众");
+//					sb.setName("测试");
+//
+//					Message message3 = Message.obtain();
+//					message3.arg1 = 1;
+//					message3.obj = sb;
+//					handler.sendMessage(message3);
+//
+//				}
+//
+//
+//			}
+//		}).start();
 
 		if (netWorkStateReceiver == null) {
 			netWorkStateReceiver = new NetWorkStateReceiver();
@@ -1930,15 +1981,18 @@ public class YiDongNianHuiActivity extends Activity implements RecytviewCash {
 					//.transform(new GlideCircleTransform(MyApplication.getAppContext(),2,Color.parseColor("#ffffffff")))
 					.into(dabg);
 		}
-
+		videoView.start();
 		super.onResume();
 
 	}
 
 
+
+
+
 	@Override
 	public void onPause() {
-
+		videoView.pause();
 		Log.d(TAG, "暂停");
 
 		super.onPause();

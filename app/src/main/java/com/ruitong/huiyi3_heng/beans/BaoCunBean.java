@@ -36,14 +36,15 @@ public class BaoCunBean {
     private String shiPingWeiZhi;
     private String zhanhuiId;
     private String zhanhuiBianMa;
-    @Generated(hash = 1490855387)
+    private boolean isBoYuYing;
+    @Generated(hash = 439347513)
     public BaoCunBean(@NotNull Long id, String shipingIP, String zhujiDiZhi,
             int moban, String tuisongDiZhi, String gonggao,
             boolean isShowMoshengren, boolean isShowShiPingLiu, boolean isHengOrShu,
             int yusu, int yudiao, int boyingren, String zhanghuId, String wenzi,
             int size, String touxiangzhuji, String houtaiDiZhi, String huiyiId,
             String wenzi1, int size1, String guanggaojiMing, String shiPingWeiZhi,
-            String zhanhuiId, String zhanhuiBianMa) {
+            String zhanhuiId, String zhanhuiBianMa, boolean isBoYuYing) {
         this.id = id;
         this.shipingIP = shipingIP;
         this.zhujiDiZhi = zhujiDiZhi;
@@ -68,6 +69,7 @@ public class BaoCunBean {
         this.shiPingWeiZhi = shiPingWeiZhi;
         this.zhanhuiId = zhanhuiId;
         this.zhanhuiBianMa = zhanhuiBianMa;
+        this.isBoYuYing = isBoYuYing;
     }
     @Generated(hash = 1469853663)
     public BaoCunBean() {
@@ -215,5 +217,11 @@ public class BaoCunBean {
     }
     public void setZhanhuiBianMa(String zhanhuiBianMa) {
         this.zhanhuiBianMa = zhanhuiBianMa;
+    }
+    public boolean getIsBoYuYing() {
+        return this.isBoYuYing;
+    }
+    public void setIsBoYuYing(boolean isBoYuYing) {
+        this.isBoYuYing = isBoYuYing;
     }
 }

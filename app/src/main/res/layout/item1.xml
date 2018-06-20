@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:background="@drawable/m1_1"
         android:id="@+id/root_rl"
-        android:layout_width="1047px"
+        android:layout_width="1438px"
         android:layout_height="400px">
 
 

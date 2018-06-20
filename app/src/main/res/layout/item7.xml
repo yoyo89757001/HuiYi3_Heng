@@ -9,9 +9,7 @@
 
     <RelativeLayout
         android:background="@drawable/bg7"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="4px"
-        android:layout_width="match_parent"
+        android:layout_width="1438px"
         android:clipChildren="false"
         android:layout_marginTop="82px"
         android:layout_height="400px">

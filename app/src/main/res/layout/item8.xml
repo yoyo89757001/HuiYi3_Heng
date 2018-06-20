@@ -8,7 +8,9 @@
     <RelativeLayout
         android:background="@drawable/bg8"
         android:id="@+id/root_rl"
-        android:layout_width="320px"
+        android:layout_marginLeft="5px"
+        android:layout_marginRight="5px"
+        android:layout_width="470px"
         android:layout_height="500px">
 
 
@@ -22,11 +24,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="150px"
+            android:layout_width="190px"
             android:id="@+id/touxiang"
-            android:layout_marginTop="50px"
+            android:layout_marginTop="40px"
             android:scaleType="fitXY"
-            android:layout_height="150px" />
+            android:layout_height="190px" />
 
         <TextView
             android:textSize="36px"
@@ -49,7 +51,7 @@
 
     <TextView
         android:id="@+id/zhiwei"
-        android:textSize="26sp"
+        android:textSize="26px"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="12px"

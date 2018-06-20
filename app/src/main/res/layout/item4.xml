@@ -7,17 +7,17 @@
     <RelativeLayout
         android:background="@drawable/m2_1"
         android:id="@+id/root_rl"
-        android:layout_width="wrap_content"
+        android:layout_width="1438px"
         android:layout_height="400px">
 
 
     <ImageView
-        android:layout_width="180px"
+        android:layout_width="220px"
         android:id="@+id/touxiang"
-       android:layout_marginLeft="134px"
+       android:layout_marginLeft="196px"
         android:scaleType="fitXY"
         android:layout_centerVertical="true"
-        android:layout_height="220px" />
+        android:layout_height="260px" />
 
 
     <LinearLayout

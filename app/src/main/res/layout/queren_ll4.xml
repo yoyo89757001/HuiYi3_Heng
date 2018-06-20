@@ -330,18 +330,35 @@
             android:layout_height="1dp"/>
 
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="120dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:textColor="@color/write"
-                android:text="关闭"
-                android:layout_gravity="center_horizontal"
+                android:text="保存设置"
                 android:id="@+id/queren"
                 android:textSize="16sp"
                 android:background="@drawable/zidonghuoqu2"
                 android:layout_height="56dp" />
 
+            <Button
+                android:layout_width="120dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/write"
+                android:text="打开语音"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/queren22"
+                android:textSize="16sp"
+                android:background="@drawable/zidonghuoqu2"
+                android:layout_height="56dp" />
+        </LinearLayout>
 
 
     </LinearLayout>

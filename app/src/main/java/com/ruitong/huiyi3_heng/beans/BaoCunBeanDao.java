@@ -46,6 +46,7 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
         public final static Property ShiPingWeiZhi = new Property(21, String.class, "shiPingWeiZhi", false, "SHI_PING_WEI_ZHI");
         public final static Property ZhanhuiId = new Property(22, String.class, "zhanhuiId", false, "ZHANHUI_ID");
         public final static Property ZhanhuiBianMa = new Property(23, String.class, "zhanhuiBianMa", false, "ZHANHUI_BIAN_MA");
+        public final static Property IsBoYuYing = new Property(24, boolean.class, "isBoYuYing", false, "IS_BO_YU_YING");
     }
 
 
@@ -84,7 +85,8 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
                 "\"GUANGGAOJI_MING\" TEXT," + // 20: guanggaojiMing
                 "\"SHI_PING_WEI_ZHI\" TEXT," + // 21: shiPingWeiZhi
                 "\"ZHANHUI_ID\" TEXT," + // 22: zhanhuiId
-                "\"ZHANHUI_BIAN_MA\" TEXT);"); // 23: zhanhuiBianMa
+                "\"ZHANHUI_BIAN_MA\" TEXT," + // 23: zhanhuiBianMa
+                "\"IS_BO_YU_YING\" INTEGER NOT NULL );"); // 24: isBoYuYing
     }
 
     /** Drops the underlying database table. */
@@ -176,6 +178,7 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
         if (zhanhuiBianMa != null) {
             stmt.bindString(24, zhanhuiBianMa);
         }
+        stmt.bindLong(25, entity.getIsBoYuYing() ? 1L: 0L);
     }
 
     @Override
@@ -261,6 +264,7 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
         if (zhanhuiBianMa != null) {
             stmt.bindString(24, zhanhuiBianMa);
         }
+        stmt.bindLong(25, entity.getIsBoYuYing() ? 1L: 0L);
     }
 
     @Override
@@ -294,7 +298,8 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
             cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // guanggaojiMing
             cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // shiPingWeiZhi
             cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22), // zhanhuiId
-            cursor.isNull(offset + 23) ? null : cursor.getString(offset + 23) // zhanhuiBianMa
+            cursor.isNull(offset + 23) ? null : cursor.getString(offset + 23), // zhanhuiBianMa
+            cursor.getShort(offset + 24) != 0 // isBoYuYing
         );
         return entity;
     }
@@ -325,6 +330,7 @@ public class BaoCunBeanDao extends AbstractDao<BaoCunBean, Long> {
         entity.setShiPingWeiZhi(cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21));
         entity.setZhanhuiId(cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22));
         entity.setZhanhuiBianMa(cursor.isNull(offset + 23) ? null : cursor.getString(offset + 23));
+        entity.setIsBoYuYing(cursor.getShort(offset + 24) != 0);
      }
     
     @Override

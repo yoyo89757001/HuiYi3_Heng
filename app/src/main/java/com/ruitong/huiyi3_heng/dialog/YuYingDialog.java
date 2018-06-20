@@ -115,9 +115,16 @@ public class YuYingDialog extends Dialog implements View.OnFocusChangeListener, 
         });
         seekBar3.setOnFocusChangeListener(this);
         l1= (Button)mView. findViewById(R.id.queren);
+        l2=mView.findViewById(R.id.queren22);
         l1.setOnClickListener(this);
         l1.setOnFocusChangeListener(this);
-
+        l2.setOnClickListener(this);
+        l2.setOnFocusChangeListener(this);
+        if (baoCunBean.getIsBoYuYing()){
+            l2.setText("关闭语音");
+        }else {
+            l2.setText("打开语音");
+        }
         super.setContentView(mView);
 
 
@@ -174,6 +181,12 @@ public class YuYingDialog extends Dialog implements View.OnFocusChangeListener, 
 
                 break;
 
+            case R.id.queren22:
+                chongzhi();
+                l2.setBackgroundResource(R.drawable.zidonghuoqu1);
+
+                break;
+
         }
 
 
@@ -194,6 +207,19 @@ public class YuYingDialog extends Dialog implements View.OnFocusChangeListener, 
                 this.dismiss();
 
                 break;
+                case R.id.queren22:
+                    if (l2.getText().toString().equals("关闭语音")){
+                        baoCunBean.setIsBoYuYing(false);
+                        baoCunBeanDao.update(baoCunBean);
+                        l2.setText("打开语音");
+                    }else {
+                        baoCunBean.setIsBoYuYing(true);
+                        baoCunBeanDao.update(baoCunBean);
+                        l2.setText("关闭语音");
+                    }
+
+
+                    break;
 
         }
 

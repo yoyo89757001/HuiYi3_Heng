@@ -9,12 +9,12 @@
     <RelativeLayout
         android:background="@drawable/bg10"
         android:id="@+id/root_rl"
-        android:layout_width="510px"
+        android:layout_width="480px"
         android:layout_height="600px">
 
 
         <ImageView
-            android:layout_width="172px"
+            android:layout_width="164px"
             android:id="@+id/touxiang"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="154px"
