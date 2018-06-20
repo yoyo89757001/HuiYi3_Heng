@@ -3,7 +3,7 @@ apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.xiaojun.huiyi3"
+        applicationId "com.ruitong.huiyi3"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1
