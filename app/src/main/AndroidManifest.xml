@@ -175,6 +175,14 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".ui.YiDongNianHuiActivity$UsbBroadCastReceiver2">
+            <intent-filter android:priority="900" >
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+
         <meta-data
             android:name="designwidth"
             android:value="1440" />
